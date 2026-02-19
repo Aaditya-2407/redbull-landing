@@ -5,8 +5,8 @@ import { Suspense, useMemo } from "react";
 import * as THREE from "three";
 
 const Hero = () => {
-  const bgColor = useMemo(() => new THREE.Color("white"), []);
-  const smokeColor = useMemo(() => new THREE.Color("#ffffff"), []);
+  const bgColor = useMemo(() => new THREE.Color("grey"), []);
+  const smokeColor = useMemo(() => new THREE.Color("#55555"), []);
 
   return (
     <section className="relative w-full h-screen bg-white overflow-hidden flex items-center">
