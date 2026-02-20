@@ -1,15 +1,18 @@
 📦 Installation & Setup
 Clone the repository:
 
-Bash
+Step 1.
+
 git clone https://github.com/Aaditya-2407/redbull-landing.git
 Install dependencies:
 
-Bash
+Step 2.
+
 npm install
 Run the development server:
 
-Bash
+Step 3.
+
 npm run dev
 
 
