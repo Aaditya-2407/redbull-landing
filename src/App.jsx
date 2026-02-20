@@ -3,6 +3,7 @@ import Lenis from 'lenis';
 import Hero from './components/Hero';
 import Flavors from './components/Flavors'; // 1. Import the new component
 import './index.css';
+import Stunts from './components/Stunts';
 
 function App() {
   useEffect(() => {
@@ -26,11 +27,12 @@ function App() {
   // App.jsx
 return (
   <div className="flex flex-col w-full">
-    <Hero />
-    <div className="relative z-50"> 
-      <Flavors />
-    </div>
+  <Hero />
+  <div className="relative z-50">
+    <Flavors />
   </div>
+  <Stunts />
+</div>
 );
 }
 
