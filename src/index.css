@@ -8,7 +8,7 @@
 }
 
 html {
-  /* This is the magic line for Lenis */
+  
   overflow-y: scroll; 
   height: auto;
 }
@@ -17,8 +17,8 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  min-height: 100vh; /* Changed from height: 100% */
-  background-color: white; /* Match your Hero bg */
+  min-height: 100vh; 
+  background-color: white; 
   overflow-x: hidden;
 }
 

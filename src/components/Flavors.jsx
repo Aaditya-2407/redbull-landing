@@ -1,63 +1,71 @@
 import { motion } from 'framer-motion';
 
 const Flavors = () => {
+  const svgMask = `url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDMwMCI+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQwIiBmb250LXdlaWdodD0iOTAwIiBmb250LWZhbWlseT0nQXJpYWwgQmxhY2ssIEdhZGdldCwgc2Fucy1zZXJpZicgZm9udC1zdHlsZT0iaXRhbGljIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjM1ZW0iIGxldHRlci1zcGFjaW5nPSItMTBweCI+V0lJSU5HUzwvdGV4dD48L3N2Zz4=")`;
+
   return (
-    <section id="flavors" className="relative w-full h-screen bg-black overflow-hidden flex flex-col items-center justify-center">
+    <section id="flavors" className="relative w-full h-screen bg-black overflow-hidden flex items-center justify-center">
       
-      {/* 1. BACKGROUND VIDEO (The Grayscale Layer) */}
-      <div className="absolute inset-0 z-0 opacity-40 grayscale">
-        <video autoPlay muted loop playsInline className="w-full h-full object-cover">
+      {/* 1. THE RED-WASHED BACKGROUND LAYER */}
+      <div className="absolute inset-0 z-0">
+        {/* The Base Grayscale Video */}
+        <video 
+          autoPlay muted loop playsInline 
+          className="w-full h-full object-cover grayscale contrast-150 brightness-75"
+        >
+          <source src="/redbull_video.mp4" type="video/mp4" />
+        </video>
+        
+        {/* filter */}
+        <div 
+          className="absolute inset-0 bg-[#FF0D11] mix-blend-multiply opacity-80" 
+          style={{ pointerEvents: 'none' }}
+        />
+        
+        {/* filter */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-60" />
+      </div>
+
+      {/* 2. text layer */}
+      <div 
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          WebkitMaskImage: svgMask,
+          maskImage: svgMask,
+          maskRepeat: 'no-repeat',
+          WebkitMaskRepeat: 'no-repeat',
+          maskPosition: 'center',
+          WebkitMaskPosition: 'center',
+          maskSize: '110%',
+          WebkitMaskSize: '110%',
+        }}
+      >
+        <video 
+          autoPlay muted loop playsInline 
+          className="w-full h-full object-cover"
+        >
           <source src="/redbull_video.mp4" type="video/mp4" />
         </video>
       </div>
 
-      {/* 2. THE COLOR-MASKED TEXT */}
-      <div className="relative z-10 flex items-center justify-center w-full h-full">
-        {/* We use mix-blend-mode to make the "color" stand out against the grey back */}
-        <h1 
-          className="text-[12rem] md:text-[22rem] font-black uppercase italic leading-none tracking-tighter select-none relative"
-          style={{
-            backgroundImage: 'url(/redbull_video.mp4)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            filter: 'drop-shadow(0 0 50px rgba(255,0,0,0.3))' // Adds a red glow to the mask
-          }}
-        >
-          W<span className="text-[#FF0D11]">iii</span>ngs
-          
-          {/* THE ACTUAL VIDEO MASK */}
-          <video 
-            autoPlay muted loop playsInline 
-            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-            style={{ 
-              clipPath: 'text', 
-              WebkitClipPath: 'text',
-              mixBlendMode: 'normal' 
-            }}
-          >
-            <source src="/redbull_video.mp4" type="video/mp4" />
-          </video>
-        </h1>
-      </div>
-
-      {/* 3. THE FLAVOURS LINEUP (Shifted slightly for better layout) */}
+      {/* 3. PRODUCT LAYER (Cans) */}
       <motion.div 
         initial={{ y: 200, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        className="absolute bottom-[-5%] z-50 w-full flex justify-center"
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute bottom-[-5%] z-50 w-full flex justify-center pointer-events-none"
       >
         <img 
           src="/Flavours.png" 
-          alt="Red Bull Flavors" 
-          className="w-[90%] md:w-[75%] h-auto drop-shadow-[0_-50px_100px_rgba(0,0,0,1)]"
+          alt="Red Bull Editions" 
+          className="w-[70%] md:w-[50%] h-auto drop-shadow-[0_-50px_100px_rgba(0,0,0,1)]"
         />
       </motion.div>
 
-      {/* 4. TOP VIGNETTE (This makes the Navbar readable) */}
-      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/80 to-transparent z-[5]" />
+      {/* gradien */}
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black to-transparent z-[20]" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent z-[20]" />
+      
     </section>
   );
 };

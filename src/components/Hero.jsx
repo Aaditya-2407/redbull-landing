@@ -5,22 +5,21 @@ import { Suspense, useMemo, useRef } from "react";
 import * as THREE from "three";
 
 const Hero = () => {
-  // 1. Setup Scroll Refs for Parallax Exit
+  
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   });
 
-  // 2. Parallax Transforms
-  // As we scroll down, the About Box moves up and fades out
+  
   const aboutY = useTransform(scrollYProgress, [0, 1], [0, -200]);
   const aboutOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   
-  // The Can moves up slightly slower for a 3D depth effect
+  
   const canY = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
-  // 3. Smoke & Background Setup
+ /*bg */
   const bgColor = useMemo(() => new THREE.Color("white"), []);
   const smokeColor = useMemo(() => new THREE.Color("#555555"), []);
 
@@ -115,7 +114,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* TRANSITION SHADOW (Bleeds into Flavors section) */}
+      
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/10 to-transparent z-[60] pointer-events-none" />
 
     </section>
