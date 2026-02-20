@@ -11,11 +11,22 @@ Run the development server:
 
 Bash
 npm run dev
+
+
+
 📂 Project Structure
+
+
+
 Plaintext
 src/
+
 ├── components/
+
 │   ├── Hero.jsx       # Smoke & lighting intro
+
 │   ├── Flavors.jsx    # Video & masked text
+
 │   └── Stunts.jsx     # 3D image carousel 
+
 └── assets/            # PNGs & MP4s
